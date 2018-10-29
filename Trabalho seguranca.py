@@ -46,7 +46,7 @@ def nivelRisco(impa, prob):
         else:
             return 'Baixo'
     elif (impa == 2):
-        if(prob == 1 | prob == 2):
+        if(prob == 1 or prob == 2):
             return 'Baixo'
         elif(prob == 5):
             return 'Alto'
@@ -55,17 +55,17 @@ def nivelRisco(impa, prob):
     elif (impa == 3):
         if (prob == 1):
             return 'Baixo'
-        elif(prob == 2 | prob == 3):
+        elif(prob == 2 or prob == 3):
             return 'Médio'
         else:
             return 'Alto'
     elif (impa == 4):
-        if (prob == 1 | prob == 2):
+        if (prob == 1 or prob == 2):
             return 'Baixo'
         else:
             return 'Alto'
     elif (impa == 5):
-        if (prob == 1 | prob == 2):
+        if (prob == 1 or prob == 2):
             return 'Médio'
         else:
             return 'Alto'
