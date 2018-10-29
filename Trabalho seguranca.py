@@ -10,7 +10,7 @@ A tabela completa deve ser mostrada na tela.
 '''
 
 
-tabelaRisco = '''
+tabelaDeRisco = '''
 Tabela de Risco
 +-------------+---------+------+------+------+---------+
 |Impacto      | 1       |2     |3     |4     | 5       |
@@ -71,6 +71,7 @@ def nivelRisco(impa, prob):
             return 'Alto'
 
 def tabelaRisco():
+    print(tabelaDeRisco)
     for i in range(2):
         impa = int(input("Qual o impacto do risco \"{}\" ?\n" .format(riscos[i+1])))
         prob = int(input("Qual a Probabilidade do risco: \"{}\" ?\n" .format(riscos[i+1])))
