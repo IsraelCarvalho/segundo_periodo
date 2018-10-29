@@ -35,17 +35,9 @@ riscos = {1:'Infecção por vírus', 2:'Acesso indevido às pastas',
 3:'Não realização de bacup', 4:'Arrombamnto da Sala',
 5:'Senhas fracas', 6:'incêndio', 7:'Queda de energia',
 8:'Desastre natural', 9:'Erro humano', 10:'Falta de manutenção'}
-impacto = [1,2,3,4,5]
-probabilidade = [1,2,3,4,5]
-risco = {}
 
-def retornarMaior(palavra1, palavra2):
-    if(len(palavra1) > len(palavra2)):
-        return palavra1
-    else:
-        return palavra2
-def criarTabela(palavra):
-    pass
+#Cria um dicionário vazio paar armazenar os níveis de rosco
+risco = {}
 
 def nivelRisco(impa, prob):
     if (impa == 1):
