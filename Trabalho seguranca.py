@@ -1,9 +1,9 @@
 '''
 [feito]Faça um programa que tenha cadastrado, preveamente, 10 descrições de risco
 
-O usuário entrará com o IMPACTO e a PROBABILIDADE
+[feito]O usuário entrará com o IMPACTO e a PROBABILIDADE
 
-Automaticamente o sistma gera o RISCO posteriormente o sitema o campo para
+[feito]Automaticamente o sistma gera o RISCO posteriormente o sitema abre os campo para
 digitar as ações para mitigar o RISCO
 
 A tabela completa deve ser mostrada na tela.
@@ -38,6 +38,7 @@ riscos = {1:'Infecção por vírus', 2:'Acesso indevido às pastas',
 
 #Cria um dicionário vazio paar armazenar os níveis de rosco
 risco = {}
+mitigar = {}
 
 def nivelRisco(impa, prob):
     if (impa == 1):
@@ -71,15 +72,15 @@ def nivelRisco(impa, prob):
             return 'Alto'
 
 def tabelaRisco():
-    print(tabelaDeRisco)
-    for i in range(2):
+    for i in range(1):
+        print(tabelaDeRisco)
         impa = int(input("Qual o impacto do risco \"{}\" ?\n" .format(riscos[i+1])))
         prob = int(input("Qual a Probabilidade do risco: \"{}\" ?\n" .format(riscos[i+1])))
         risco[i+1] = nivelRisco(impa, prob)
+        mitigar[i+1] = input("Digite a ação para mitigar o risco \"{}\" nível: {}\n".format(riscos[i+1], risco[i+1]))
+
 
 def main():
     tabelaRisco()
-    for i in range(2):
-        print(risco[i+1])
 
 main()
