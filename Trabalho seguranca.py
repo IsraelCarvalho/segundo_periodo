@@ -39,6 +39,8 @@ riscos = {1:'Infecção por vírus', 2:'Acesso indevido às pastas',
 #Cria um dicionário vazio paar armazenar os níveis de rosco
 risco = {}
 mitigar = {}
+probabilidade = {}
+impacto = {}
 
 def nivelRisco(impa, prob):
     if (impa == 1):
@@ -50,7 +52,7 @@ def nivelRisco(impa, prob):
         if(prob == 1 or prob == 2):
             return 'Baixo'
         elif(prob == 5):
-            return 'Alto'
+            return 'Alto '
         else:
             return 'Médio'
     elif (impa == 3):
@@ -59,28 +61,86 @@ def nivelRisco(impa, prob):
         elif(prob == 2 or prob == 3):
             return 'Médio'
         else:
-            return 'Alto'
+            return 'Alto '
     elif (impa == 4):
         if (prob == 1 or prob == 2):
             return 'Baixo'
         else:
-            return 'Alto'
+            return 'Alto '
     elif (impa == 5):
         if (prob == 1 or prob == 2):
             return 'Médio'
         else:
-            return 'Alto'
+            return 'Alto '
 
 def tabelaRisco():
-    for i in range(1):
+    for i in range(10):
         print(tabelaDeRisco)
         impa = int(input("Qual o impacto do risco \"{}\" ?\n" .format(riscos[i+1])))
+        if(impa == 1):
+            impacto[i+1] = 'Insignificante'
+        elif(impa == 2):
+            impacto[i+1] = 'Baixo         '
+        elif(impa == 3):
+            impacto[i+1] = 'Médio         '
+        elif(impa == 4):
+            impacto[i+1] = 'Alto          '
+        else:
+            impacto[i+1] = 'Trágico       '
         prob = int(input("Qual a Probabilidade do risco: \"{}\" ?\n" .format(riscos[i+1])))
+        if(prob == 1):
+            probabilidade[i+1] = 'Remota        '
+        elif(prob == 2):
+            probabilidade[i+1] = 'Baixa         '
+        elif(prob == 3):
+            probabilidade[i+1] = 'Média         '
+        elif(prob == 4):
+            probabilidade[i+1] = 'Alta          '
+        else:
+            probabilidade[i+1] = 'Elevadíssima  '
         risco[i+1] = nivelRisco(impa, prob)
         mitigar[i+1] = input("Digite a ação para mitigar o risco \"{}\" nível: {}\n".format(riscos[i+1], risco[i+1]))
 
+def maior():
+    maiorPalavra = ""
+    for i in range(10):
+        if(len(mitigar[i+1]) > len(maiorPalavra)):
+            maiorPalavra = mitigar[i+1]
+    return maiorPalavra
+
+def montarTabela():
+    maiorPalavra = maior()
+    if(len(maiorPalavra) < 18):
+        barra = '-' * 19
+    else:
+        barra = '-'*len(maiorPalavra)
+        espaco = " " * (len(maiorPalavra) - 18)
+    print('Ativo: Servidor de arquivos')
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Descrição do risco        |Impacto       |Probabilidade |Classificação de risco |Ação para mitigar{}|'.format(espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Infecção por vírus        |{}|{}|{}                  |{}{}|'.format(impacto[1], probabilidade[1], risco[1], mitigar[1], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|IAcesso indevido às pastas|{}|{}|{}                  |{}{}|'.format(impacto[2], probabilidade[2], risco[2], mitigar[2], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Não realização de backup  |{}|{}|{}                  |{}{}|'.format(impacto[3], probabilidade[3], risco[3], mitigar[3], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Arrombamento da sala      |{}|{}|{}                  |{}{}|'.format(impacto[4], probabilidade[4], risco[4], mitigar[4], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Senhas fracas             |{}|{}|{}                  |{}{}|'.format(impacto[5], probabilidade[5], risco[5], mitigar[5], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Incêndio                  |{}|{}|{}                  |{}{}|'.format(impacto[6], probabilidade[6], risco[6], mitigar[6], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Queda de energia          |{}|{}|{}                  |{}{}|'.format(impacto[7], probabilidade[7], risco[7], mitigar[7], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Desastre Natural          |{}|{}|{}                  |{}{}|'.format(impacto[8], probabilidade[8], risco[8], mitigar[8], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Erro humano               |{}|{}|{}                  |{}{}|'.format(impacto[9], probabilidade[9], risco[9], mitigar[9], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
+    print('|Falta de manutenção       |{}|{}|{}                  |{}{}|'.format(impacto[10], probabilidade[10], risco[10], mitigar[10], espaco))
+    print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
 
 def main():
     tabelaRisco()
-
+    montarTabela()
 main()
