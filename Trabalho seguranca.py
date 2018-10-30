@@ -6,10 +6,10 @@
 [feito]Automaticamente o sistma gera o RISCO posteriormente o sitema abre os campo para
 digitar as ações para mitigar o RISCO
 
-A tabela completa deve ser mostrada na tela.
+[feito]A tabela completa deve ser mostrada na tela.
 '''
 
-
+#String da tabela de risco
 tabelaDeRisco = '''
 Tabela de Risco
 +-------------+---------+------+------+------+---------+
@@ -36,12 +36,13 @@ riscos = {1:'Infecção por vírus', 2:'Acesso indevido às pastas',
 5:'Senhas fracas', 6:'incêndio', 7:'Queda de energia',
 8:'Desastre natural', 9:'Erro humano', 10:'Falta de manutenção'}
 
-#Cria um dicionário vazio paar armazenar os níveis de rosco
+#Cria dicionários vazios paar armazenar os níveis de risco, ação para mitigar, probabilidade e impacot
 risco = {}
 mitigar = {}
 probabilidade = {}
 impacto = {}
 
+#recebe o nível deimpacto e a probabilidade e retorna o nível de risco
 def nivelRisco(impa, prob):
     if (impa == 1):
         if(prob == 5):
@@ -73,6 +74,7 @@ def nivelRisco(impa, prob):
         else:
             return 'Alto '
 
+#Alimenta os dicionários
 def tabelaRisco():
     for i in range(10):
         print(tabelaDeRisco)
@@ -101,6 +103,7 @@ def tabelaRisco():
         risco[i+1] = nivelRisco(impa, prob)
         mitigar[i+1] = input("Digite a ação para mitigar o risco \"{}\" nível: {}\n".format(riscos[i+1], risco[i+1]))
 
+#define qual a maior string para a cração da tabela final
 def maior():
     maiorPalavra = ""
     for i in range(10):
@@ -108,6 +111,7 @@ def maior():
             maiorPalavra = mitigar[i+1]
     return maiorPalavra
 
+#Gera a tabela final
 def montarTabela():
     maiorPalavra = maior()
     if(len(maiorPalavra) < 18):
@@ -140,7 +144,9 @@ def montarTabela():
     print('|Falta de manutenção       |{}|{}|{}                  |{}{}|'.format(impacto[10], probabilidade[10], risco[10], mitigar[10], espaco))
     print('+--------------------------+--------------+--------------+-----------------------+{}+'.format(barra))
 
+
 def main():
     tabelaRisco()
     montarTabela()
+#Inicia o prigrama
 main()
